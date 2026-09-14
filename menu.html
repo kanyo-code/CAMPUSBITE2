@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="CampusBites - View our delicious food menu with dietary options" />
+    <title>CampusBites - Food Menu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        /* Menu-specific styles */
+        .page-header {
+            background: linear-gradient(135deg, #F57C00, #f6eed6);
+            padding: 3.75rem 0 2.5rem;
+            text-align: center;
+            color: #1A1A2E;
+        }
+        .page-header h1 { font-size: 2.625rem; }
+        .page-header p { font-size: 1.125rem; opacity: 0.85; }
+
+        .menu-filters {
+            padding: 1.875rem 0;
+            background: #F8F9FA;
+            text-align: center;
+        }
+        .filter-buttons {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            padding: 0.625rem 1.5rem;
+            border: 2px solid #F57C00;
+            border-radius: 50px;
+            background: transparent;
+            color: #F57C00;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', Arial, sans-serif;
+            font-size: 0.875rem;
+        }
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #F57C00;
+            color: #FFFFFF;
+        }
+
+        .menu-grid-section { padding: 3.125rem 0 5rem; }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.875rem;
+        }
+        .menu-item {
+            display: flex;
+            flex-direction: column;
+            background: #FFFFFF;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(26, 26, 46, 0.08);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        .menu-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 48px rgba(26, 26, 46, 0.15);
+        }
+        .menu-item-image {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+        .menu-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .menu-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            padding: 4px 14px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            font-family: 'Poppins', Arial, sans-serif;
+        }
+        .menu-badge.halaal { background: #6C00A8; }
+        .menu-badge.vegetarian { background: #00C853; color: #1A1A2E; }
+        .menu-badge.vegan { background: #76FF03; color: #1A1A2E; }
+        .menu-badge.healthy { background: #00E5FF; color: #1A1A2E; }
+
+        .menu-item-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex: 1;
+            padding: 1.25rem;
+        }
+        .menu-item-content h3 { font-size: 1.25rem; }
+        .menu-item-content p {
+            color: #757575;
+            font-size: 0.875rem;
+            margin: 0.5rem 0 0.9375rem;
+        }
+        .menu-item-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+        .menu-price {
+            font-family: 'Poppins', Arial, sans-serif;
+            font-weight: 700;
+            font-size: 1.375rem;
+            color: #F57C00;
+        }
+
+        @media (max-width: 992px) {
+            .menu-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .menu-grid { grid-template-columns: 1fr; }
+            .page-header h1 { font-size: 1.75rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <span class="logo-brand"><span class="orange">CAMPUS</span><span class="yellow">BITES</span></span>
+                <span class="logo-slogan">Bite Into <span class="highlight">Happiness</span></span>
+            </a>
+            <nav class="nav">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html" class="active">Menu</a></li>
+                    <li><a href="printing.html">Printing</a></li>
+                    <li><a href="order.html">Order</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- PAGE HEADER -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Menu</h1>
+            <p>Fresh, delicious meals prepared daily just for you.</p>
+        </div>
+    </section>
+
+    <!-- FILTERS -->
+    <section class="menu-filters">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterMenu('all', this)">All</button>
+                <button class="filter-btn" onclick="filterMenu('halaal', this)">🕌 Halaal</button>
+                <button class="filter-btn" onclick="filterMenu('vegetarian', this)">🌿 Vegetarian</button>
+                <button class="filter-btn" onclick="filterMenu('vegan', this)">🌱 Vegan</button>
+                <button class="filter-btn" onclick="filterMenu('healthy', this)">💪 Healthy</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- MENU ITEMS -->
+    <section class="menu-grid-section">
+        <div class="container">
+            <div class="menu-grid" id="menuGrid">
+                <div class="menu-item" data-category="halaal">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=400&h=200&fit=crop" alt="Breakfast Wrap" />
+                        <span class="menu-badge halaal">🕌 Halaal</span>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Breakfast Wrap</h3>
+                        <p>Scrambled eggs, cheese, and grilled chicken</p>
+                        <div class="menu-item-footer">
+                            <span class="menu-price">R45.00</span>
+                            <a href="order.html" class="btn btn-primary btn-sm">Order</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="vegetarian">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=200&fit=crop" alt="Greek Salad" />
+                        <span class="menu-badge vegetarian">🌿 Vegetarian</span>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Greek Salad</h3>
+                        <p>Fresh greens, feta, olives, and vinaigrette</p>
+                        <div class="menu-item-footer">
+                            <span class="menu-price">R55.00</span>
+                            <a href="order.html" class="btn btn-primary btn-sm">Order</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="halaal">
+                    <div class="menu-item-image">
+                        <img src="butterchicken1.jpg" alt="Butter Chicken" />
+                        <span class="menu-badge halaal">🕌 Halaal</span>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Butter Chicken</h3>
+                        <p>Rich creamy curry with basmati rice</p>
+                        <div class="menu-item-footer">
+                            <span class="menu-price">R75.00</span>
+                            <a href="order.html" class="btn btn-primary btn-sm">Order</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="healthy vegan">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=200&fit=crop" alt="Smoothie Bowl" />
+                        <span class="menu-badge healthy">💪 Healthy</span>
+                        <span class="menu-badge vegan" style="background:#76FF03;color:#1A1A2E;">🌱 Vegan</span>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Smoothie Bowl</h3>
+                        <p>Mixed berries, granola, and fresh fruit</p>
+                        <div class="menu-item-footer">
+                            <span class="menu-price">R40.00</span>
+                            <a href="order.html" class="btn btn-primary btn-sm">Order</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="healthy vegan">
+                    <div class="menu-item-image">
+                        <img src="orange juice.jpg" alt="Orange Juice" />
+                        <span class="menu-badge healthy">💪 Healthy</span>
+                        <span class="menu-badge vegan" style="background:#76FF03;color:#1A1A2E;">🌱 Vegan</span>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Orange Juice</h3>
+                        <p>Refreshing orange juice with pulp</p>
+                        <div class="menu-item-footer">
+                            <span class="menu-price">R20.00</span>
+                            <a href="order.html" class="btn btn-primary btn-sm">Order</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="healthy vegan">
+                    <div class="menu-item-image">
+                        <img src="chips.jpg" alt="Potato Chips" />
+                        <span class="menu-badge healthy">💪 Healthy</span>
+                        <span class="menu-badge vegan" style="background:#76FF03;color:#1A1A2E;">🌱 Vegan</span>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Potato Chips</h3>
+                        <p>Crispy, salty, and satisfying</p>
+                        <div class="menu-item-footer">
+                            <span class="menu-price">R15.00</span>
+                            <a href="order.html" class="btn btn-primary btn-sm">Order</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="healthy vegan">
+                    <div class="menu-item-image">
+                        <img src="chocolate.jpg" alt="Chocolate" />
+                        <span class="menu-badge healthy">💪 Healthy</span>
+                        <span class="menu-badge vegan" style="background:#76FF03;color:#1A1A2E;">🌱 Vegan</span>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Chocolate</h3>
+                        <p>Delicious dark chocolate</p>
+                        <div class="menu-item-footer">
+                            <span class="menu-price">R25.00</span>
+                            <a href="order.html" class="btn btn-primary btn-sm">Order</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="halaal">
+                    <div class="menu-item-image">
+                        <img src="hotdog.jpg" alt="Hot Dog" />
+                        <span class="menu-badge halaal">🕌 Halaal</span>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Hot Dog</h3>
+                        <p>A good afternoon snack</p>
+                        <div class="menu-item-footer">
+                            <span class="menu-price">R15.00</span>
+                            <a href="order.html" class="btn btn-primary btn-sm">Order</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="healthy vegan">
+                    <div class="menu-item-image">
+                        <img src="muffins.jpg" alt="Muffins" />
+                        <span class="menu-badge healthy">💪 Healthy</span>
+                        <span class="menu-badge vegan" style="background:#76FF03;color:#1A1A2E;">🌱 Vegan</span>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Muffins</h3>
+                        <p>Soft, sweet, and easy to grab</p>
+                        <div class="menu-item-footer">
+                            <span class="menu-price">R12.00</span>
+                            <a href="order.html" class="btn btn-primary btn-sm">Order</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="healthy vegan">
+                    <div class="menu-item-image">
+                        <img src="sourworms.jpg" alt="Sour Worms" />
+                        <span class="menu-badge healthy">💪 Healthy</span>
+                        <span class="menu-badge vegan" style="background:#76FF03;color:#1A1A2E;">🌱 Vegan</span>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Sour Worms</h3>
+                        <p>A little sugar for recharge</p>
+                        <div class="menu-item-footer">
+                            <span class="menu-price">R30.00</span>
+                            <a href="order.html" class="btn btn-primary btn-sm">Order</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="healthy vegan">
+                    <div class="menu-item-image">
+                        <img src="water.jpg" alt="Water" />
+                        <span class="menu-badge healthy">💪 Healthy</span>
+                        <span class="menu-badge vegan" style="background:#76FF03;color:#1A1A2E;">🌱 Vegan</span>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Water</h3>
+                        <p>Fresh hydration for the day</p>
+                        <div class="menu-item-footer">
+                            <span class="menu-price">R10.00</span>
+                            <a href="order.html" class="btn btn-primary btn-sm">Order</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <span class="logo-brand"><span class="orange">CAMPUS</span><span class="yellow">BITES</span></span>
+                    <span class="logo-slogan">Bite Into <span class="highlight">Happiness</span></span>
+                </a>
+                <p>Making student life easier with food delivery and document printing.</p>
+                <div class="footer-social">
+                    <a href="#">📷</a>
+                    <a href="#">📘</a>
+                    <a href="#">🐦</a>
+                    <a href="#">💬</a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="printing.html">Printing</a></li>
+                    <li><a href="order.html">Order</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="menu.html">Food Delivery</a></li>
+                    <li><a href="printing.html">Document Printing</a></li>
+                    <li><a href="order.html">Bulk Orders</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li>📞 +27 12 345 6789</li>
+                    <li>📧 info@campusbites.co.za</li>
+                    <li>📍 Main Campus, Block A</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 CampusBites. All rights reserved. | Bite Into Happiness</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+
+        function filterMenu(category, button) {
+            const items = document.querySelectorAll('.menu-item');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+            if (button) {
+                button.classList.add('active');
+            }
+
+            items.forEach(item => {
+                const categories = (item.dataset.category || '').split(' ').filter(Boolean);
+                if (category === 'all' || categories.includes(category)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="CampusBites - Document printing and delivery services for students" />
+    <title>CampusBites - Printing Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, #F57C00, #f4edd6);
+            padding: 3.75rem 0 2.5rem;
+            text-align: center;
+            color: #1A1A2E;
+        }
+        .page-header h1 { font-size: 2.625rem; }
+        .page-header p { font-size: 1.125rem; opacity: 0.85; }
+
+        .printing-services { padding: 3.75rem 0; }
+        .printing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.875rem;
+        }
+        .printing-card {
+            background: #FFFFFF;
+            border-radius: 20px;
+            padding: 2.5rem 1.875rem;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(26, 26, 46, 0.08);
+            transition: all 0.3s ease;
+            border-bottom: 6px solid #F57C00;
+        }
+        .printing-card:hover { transform: translateY(-10px); box-shadow: 0 16px 48px rgba(26, 26, 46, 0.15); }
+        .printing-card.highlight { border-bottom-color: #FFC107; background: #FFF8E1; }
+        .printing-icon { font-size: 3.5rem; margin-bottom: 0.9375rem; }
+        .printing-card h3 { font-size: 1.375rem; }
+        .printing-card p { color: #757575; font-size: 0.9375rem; margin-bottom: 0.9375rem; }
+        .printing-card ul { text-align: left; margin: 0.9375rem 0 1.5625rem; padding-left: 0.625rem; }
+        .printing-card ul li { padding: 0.375rem 0; color: #424242; font-size: 0.875rem; }
+
+        .privacy-section { padding: 3.75rem 0; background: #F8F9FA; }
+        .privacy-box {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+            background: #FFFFFF;
+            border-radius: 20px;
+            padding: 3.125rem;
+            box-shadow: 0 8px 32px rgba(26, 26, 46, 0.08);
+            border-left: 6px solid #F57C00;
+        }
+        .privacy-icon { font-size: 4.5rem; flex-shrink: 0; }
+        .privacy-content h3 { font-size: 1.625rem; }
+        .privacy-content p { font-size: 1rem; color: #424242; margin-bottom: 0.9375rem; }
+        .privacy-content ul li { padding: 0.3125rem 0; color: #424242; font-size: 0.9375rem; }
+
+        @media (max-width: 992px) {
+            .printing-grid { grid-template-columns: 1fr 1fr; }
+            .privacy-box { flex-direction: column; text-align: center; padding: 1.875rem; }
+        }
+        @media (max-width: 768px) {
+            .printing-grid { grid-template-columns: 1fr; }
+            .page-header h1 { font-size: 1.75rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <span class="logo-brand"><span class="orange">CAMPUS</span><span class="yellow">BITES</span></span>
+                <span class="logo-slogan">Bite Into <span class="highlight">Happiness</span></span>
+            </a>
+            <nav class="nav">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="printing.html" class="active">Printing</a></li>
+                    <li><a href="order.html">Order</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Document Printing Services</h1>
+            <p>Upload, print, and deliver — all from your phone or laptop.</p>
+        </div>
+    </section>
+
+    <section class="printing-services">
+        <div class="container">
+            <div class="printing-grid">
+                <div class="printing-card">
+                    <div class="printing-icon">📄</div>
+                    <h3>Black &amp; White Printing</h3>
+                    <p>Standard document printing at an affordable price.</p>
+                    <ul>
+                        <li>✅ R2.00 per page</li>
+                        <li>✅ Single or double-sided</li>
+                        <li>✅ A4 or A3 size</li>
+                    </ul>
+                    <a href="order.html" class="btn btn-primary">Upload &amp; Print</a>
+                </div>
+
+                <div class="printing-card highlight">
+                    <div class="printing-icon">🖨️</div>
+                    <h3>Colour Printing</h3>
+                    <p>High-quality colour printing for presentations and projects.</p>
+                    <ul>
+                        <li>✅ R5.00 per page</li>
+                        <li>✅ High-quality ink</li>
+                        <li>✅ Photo-quality paper</li>
+                    </ul>
+                    <a href="order.html" class="btn btn-primary">Upload &amp; Print</a>
+                </div>
+
+                <div class="printing-card">
+                    <div class="printing-icon">📚</div>
+                    <h3>Binding &amp; Laminating</h3>
+                    <p>Professional finishing for your documents and posters.</p>
+                    <ul>
+                        <li>✅ Binding: R20.00</li>
+                        <li>✅ Laminating: R15.00</li>
+                        <li>✅ Same-day service</li>
+                    </ul>
+                    <a href="order.html" class="btn btn-primary">Request Service</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="privacy-section">
+        <div class="container">
+            <div class="privacy-box">
+                <div class="privacy-icon">🔒</div>
+                <div class="privacy-content">
+                    <h3>Your Privacy Matters</h3>
+                    <p>All uploaded documents are <strong>automatically erased</strong> from our system within <strong>15 minutes</strong> of delivery.</p>
+                    <ul>
+                        <li>✅ No stored documents</li>
+                        <li>✅ Secure upload</li>
+                        <li>✅ 15-minute auto-delete</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <span class="logo-brand"><span class="orange">CAMPUS</span><span class="yellow">BITES</span></span>
+                    <span class="logo-slogan">Bite Into <span class="highlight">Happiness</span></span>
+                </a>
+                <p>Making student life easier with food delivery and document printing.</p>
+                <div class="footer-social">
+                    <a href="#">📷</a>
+                    <a href="#">📘</a>
+                    <a href="#">🐦</a>
+                    <a href="#">💬</a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="printing.html">Printing</a></li>
+                    <li><a href="order.html">Order</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="menu.html">Food Delivery</a></li>
+                    <li><a href="printing.html">Document Printing</a></li>
+                    <li><a href="order.html">Bulk Orders</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li>📞 +27 12 345 6789</li>
+                    <li>📧 info@campusbites.co.za</li>
+                    <li>📍 Main Campus, Block A</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 CampusBites. All rights reserved. | Bite Into Happiness</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

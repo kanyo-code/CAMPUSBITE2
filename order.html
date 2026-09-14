@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="CampusBites - Place your order for food delivery or document printing" />
+    <title>CampusBites - Place Order</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+        /* ===== PAGE HEADER ===== */
+        .page-header {
+            background: linear-gradient(135deg, #F57C00, #f5efde);
+            padding: 3.75rem 0 2.5rem;
+            text-align: center;
+            color: #1A1A2E;
+            position: relative;
+            z-index: 1;
+        }
+        .page-header h1 { font-size: 2.625rem; font-weight: 800; }
+        .page-header p { font-size: 1.125rem; opacity: 0.85; }
+
+        /* ===== ORDER SECTION ===== */
+        .order-section {
+            padding: 3.75rem 0 5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .order-wrapper {
+            max-width: 820px;
+            margin: 0 auto;
+        }
+
+        .order-form-container {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 28px;
+            padding: 3rem 3.5rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .order-form-container:hover {
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.18);
+        }
+
+        .order-form-container h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #1A1A2E;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .order-form-container h1 span {
+            background: linear-gradient(45deg, #F57C00, #FFC107);
+            padding: 4px 14px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: #1A1A2E;
+        }
+
+        .order-form-container > p {
+            color: #757575;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid #F57C00;
+            padding-left: 16px;
+        }
+
+        /* ===== FORM STYLES ===== */
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-family: 'Poppins', Arial, sans-serif;
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: #1A1A2E;
+            margin-bottom: 0.3125rem;
+        }
+
+        .form-group .required {
+            color: #E53935;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 2px solid #E8E8E8;
+            border-radius: 12px;
+            font-family: 'Open Sans', Arial, sans-serif;
+            font-size: 0.9375rem;
+            transition: all 0.3s ease;
+            background: #FFFFFF;
+            color: #1A1A2E;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #F57C00;
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(245, 124, 0, 0.15);
+            transform: translateY(-1px);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        /* ===== SERVICE TYPE CARDS ===== */
+        .service-type-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .service-option {
+            padding: 14px 12px;
+            border: 2px solid #E8E8E8;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #FFFFFF;
+            font-family: 'Poppins', Arial, sans-serif;
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: #757575;
+        }
+
+        .service-option:hover {
+            border-color: #F57C00;
+            background: #FFF8E1;
+            transform: translateY(-2px);
+        }
+
+        .service-option.selected {
+            border-color: #F57C00;
+            background: #FFF3E0;
+            color: #F57C00;
+            box-shadow: 0 4px 15px rgba(245, 124, 0, 0.2);
+        }
+
+        .service-option .icon {
+            display: block;
+            font-size: 1.5rem;
+            margin-bottom: 4px;
+        }
+
+        /* ===== FOOD & PRINTING OPTIONS ===== */
+        .food-options,
+        .printing-options {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .food-options.visible,
+        .printing-options.visible {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .food-selection,
+        .printing-selection {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .food-item,
+        .printing-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 14px;
+            border: 2px solid #E8E8E8;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.875rem;
+            background: #FFFFFF;
+        }
+
+        .food-item:hover,
+        .printing-item:hover {
+            border-color: #F57C00;
+            background: #FFF8E1;
+            transform: translateY(-2px);
+        }
+
+        .food-item input,
+        .printing-item input {
+            width: auto;
+            margin-right: 4px;
+            accent-color: #F57C00;
+        }
+
+        .food-item .price-tag,
+        .printing-item .price-tag {
+            margin-left: auto;
+            background: #FFF8E1;
+            padding: 2px 12px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.75rem;
+            color: #F57C00;
+        }
+
+        /* ===== CONFIRMATION ===== */
+        .order-confirmation {
+            text-align: center;
+            padding: 2.5rem 1.25rem;
+            display: none;
+        }
+
+        .order-confirmation.visible {
+            display: block;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .confirmation-icon {
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            animation: bounce 0.8s ease;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .order-confirmation h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #2E7D32;
+        }
+
+        .order-confirmation p {
+            color: #757575;
+            font-size: 1rem;
+            margin: 0.625rem 0;
+        }
+
+        .order-confirmation .delivery-time {
+            display: inline-block;
+            background: #FFF8E1;
+            padding: 0.6rem 1.8rem;
+            border-radius: 50px;
+            font-family: 'Poppins', Arial, sans-serif;
+            font-weight: 600;
+            color: #F57C00;
+            margin: 0.9375rem 0;
+            border: 2px solid #F57C00;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 992px) {
+            .service-type-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .order-form-container {
+                padding: 1.5rem;
+            }
+            .order-form-container h1 {
+                font-size: 1.5rem;
+                flex-wrap: wrap;
+            }
+            .food-selection,
+            .printing-selection {
+                grid-template-columns: 1fr;
+            }
+            .service-type-grid {
+                grid-template-columns: 1fr;
+            }
+            .page-header h1 {
+                font-size: 1.75rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .order-form-container {
+                padding: 1rem;
+            }
+            .order-form-container h1 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== BLURRED LOGO BACKGROUND ===== -->
+    <style>
+        body::before {
+            background: url("campusbitelogo.png") center center / 55% no-repeat;
+            opacity: 0.18;
+            filter: blur(2px) brightness(1.05);
+        }
+    </style>
+
+    <!-- ===== HEADER ===== -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="campusbitelogo.png" class="logo-image" />
+                <div class="logo-text-wrapper">
+                    <span class="logo-brand"><span class="orange">CAMPUS</span><span class="yellow">BITES</span></span>
+                    <span class="logo-slogan">Bite Into <span class="highlight">Happiness</span></span>
+                </div>
+            </a>
+            <nav class="nav">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="printing.html">Printing</a></li>
+                    <li><a href="order.html" class="active">Order</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ===== PAGE HEADER ===== -->
+    <section class="page-header">
+        <div class="container">
+            <h1>🍽️ Place Your Order</h1>
+            <p>Fill in the details below and we'll deliver to your location.</p>
+        </div>
+    </section>
+
+    <!-- ===== ORDER FORM ===== -->
+    <section class="order-section">
+        <div class="container">
+            <div class="order-wrapper">
+                <div class="order-form-container">
+
+                    <!-- Form -->
+                    <form id="orderForm" onsubmit="handleOrder(event)">
+
+                        <!-- Student Details -->
+                        <div class="form-group">
+                            <label for="studentName">Full Name <span class="required">*</span></label>
+                            <input type="text" id="studentName" placeholder="e.g. Thandi M." required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="studentNumber">Student Number <span class="required">*</span></label>
+                            <input type="text" id="studentNumber" placeholder="e.g. ST10491900" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phoneNumber">Phone Number <span class="required">*</span></label>
+                            <input type="tel" id="phoneNumber" placeholder="e.g. 082 123 4567" required />
+                        </div>
+
+                        <!-- Service Type -->
+                        <div class="form-group">
+                            <label>Service Type <span class="required">*</span></label>
+                            <div class="service-type-grid">
+                                <div class="service-option" onclick="selectService('food')" id="service-food">
+                                    <span class="icon">🍔</span>
+                                    Food Delivery
+                                </div>
+                                <div class="service-option" onclick="selectService('printing')" id="service-printing">
+                                    <span class="icon">🖨️</span>
+                                    Document Printing
+                                </div>
+                                <div class="service-option" onclick="selectService('both')" id="service-both">
+                                    <span class="icon">🍔+🖨️</span>
+                                    Both
+                                </div>
+                            </div>
+                            <input type="hidden" id="orderType" value="" required />
+                        </div>
+
+                        <!-- Food Options -->
+                        <div class="food-options" id="foodOptions">
+                            <div class="form-group">
+                                <label>Select Your Meal</label>
+                                <div class="food-selection">
+                                    <label class="food-item">
+                                        <input type="checkbox" name="food" value="Breakfast Wrap - R45" />
+                                        🥐 Breakfast Wrap
+                                        <span class="price-tag">R45</span>
+                                    </label>
+                                    <label class="food-item">
+                                        <input type="checkbox" name="food" value="Greek Salad - R55" />
+                                        🥗 Greek Salad
+                                        <span class="price-tag">R55</span>
+                                    </label>
+                                    <label class="food-item">
+                                        <input type="checkbox" name="food" value="Butter Chicken - R75" />
+                                        🍛 Butter Chicken
+                                        <span class="price-tag">R75</span>
+                                    </label>
+                                    <label class="food-item">
+                                        <input type="checkbox" name="food" value="Smoothie Bowl - R40" />
+                                        🥤 Smoothie Bowl
+                                        <span class="price-tag">R40</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Printing Options -->
+                        <div class="printing-options" id="printingOptions">
+                            <div class="form-group">
+                                <label>Printing Options</label>
+                                <div class="printing-selection">
+                                    <label class="printing-item">
+                                        <input type="radio" name="printType" value="black-white" />
+                                        ⚫ Black &amp; White
+                                        <span class="price-tag">R2/page</span>
+                                    </label>
+                                    <label class="printing-item">
+                                        <input type="radio" name="printType" value="colour" />
+                                        🟣 Colour
+                                        <span class="price-tag">R5/page</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="pages">Number of Pages</label>
+                                <input type="number" id="pages" min="1" value="1" />
+                            </div>
+                            <div class="form-group">
+                                <label for="documentUpload">Upload Document</label>
+                                <input type="file" id="documentUpload" accept=".pdf,.doc,.docx,.jpg,.png" />
+                            </div>
+                        </div>
+
+                        <!-- Delivery Location -->
+                        <div class="form-group">
+                            <label for="deliveryLocation">Delivery Location <span class="required">*</span></label>
+                            <select id="deliveryLocation" required>
+                                <option value="">Select your location...</option>
+                                <option value="res-a">🏠 Residence A</option>
+                                <option value="res-b">🏠 Residence B</option>
+                                <option value="block-a">📚 Lecture Hall Block A</option>
+                                <option value="block-b">📚 Lecture Hall Block B</option>
+                                <option value="library">📖 Library</option>
+                                <option value="office">🏢 Faculty Office</option>
+                            </select>
+                        </div>
+
+                        <!-- Special Instructions -->
+                        <div class="form-group">
+                            <label for="specialInstructions">Special Instructions</label>
+                            <textarea id="specialInstructions" rows="3" placeholder="Any special requests or dietary requirements..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-large" style="width:100%; font-size:1.1rem; padding:1rem 2rem;">
+                            🚀 Place Order
+                        </button>
+                    </form>
+
+                    <!-- Confirmation -->
+                    <div class="order-confirmation" id="orderConfirmation">
+                        <div class="confirmation-icon">✅</div>
+                        <h3>Order Placed Successfully!</h3>
+                        <p>We will notify you when we enter your building.</p>
+                        <div class="delivery-time">⏱️ Estimated Delivery: 25 minutes</div>
+                        <br />
+                        <button class="btn btn-secondary" onclick="resetForm()" style="background:#F57C00;color:#FFFFFF;border:none;padding:0.8rem 2rem;border-radius:50px;font-weight:700;cursor:pointer;">
+                            📝 Place Another Order
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <img src="campusbitelogo.png"  class="logo-image" style="height:40px;" />
+                    <div class="logo-text-wrapper">
+                        <span class="logo-brand"><span class="orange">CAMPUS</span><span class="yellow">BITES</span></span>
+                        <span class="logo-slogan">Bite Into <span class="highlight">Happiness</span></span>
+                    </div>
+                </a>
+                <p>Making student life easier with food delivery and document printing.</p>
+                <div class="footer-social">
+                    <a href="#">📷</a>
+                    <a href="#">📘</a>
+                    <a href="#">🐦</a>
+                    <a href="#">💬</a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="printing.html">Printing</a></li>
+                    <li><a href="order.html">Order</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="menu.html">Food Delivery</a></li>
+                    <li><a href="printing.html">Document Printing</a></li>
+                    <li><a href="order.html">Bulk Orders</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li>📞 +27 12 345 6789</li>
+                    <li>📧 info@campusbites.co.za</li>
+                    <li>📍 Main Campus, Block A</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 CampusBites. All rights reserved. | Bite Into Happiness</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+
+        function selectService(type) {
+            // Update hidden input
+            document.getElementById('orderType').value = type;
+
+            // Update visual selection
+            document.querySelectorAll('.service-option').forEach(el => {
+                el.classList.remove('selected');
+            });
+
+            if (type === 'food') document.getElementById('service-food').classList.add('selected');
+            else if (type === 'printing') document.getElementById('service-printing').classList.add('selected');
+            else if (type === 'both') document.getElementById('service-both').classList.add('selected');
+
+            // Show/hide options
+            document.getElementById('foodOptions').classList.toggle('visible', type === 'food' || type === 'both');
+            document.getElementById('printingOptions').classList.toggle('visible', type === 'printing' || type === 'both');
+        }
+
+        function handleOrder(e) {
+            e.preventDefault();
+
+            // Basic validation
+            const name = document.getElementById('studentName').value.trim();
+            const number = document.getElementById('studentNumber').value.trim();
+            const phone = document.getElementById('phoneNumber').value.trim();
+            const location = document.getElementById('deliveryLocation').value;
+
+            if (!name || !number || !phone || !location) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            document.getElementById('orderForm').style.display = 'none';
+            document.getElementById('orderConfirmation').classList.add('visible');
+        }
+
+        function resetForm() {
+            document.getElementById('orderForm').reset();
+            document.getElementById('orderForm').style.display = 'block';
+            document.getElementById('orderConfirmation').classList.remove('visible');
+            document.getElementById('foodOptions').classList.remove('visible');
+            document.getElementById('printingOptions').classList.remove('visible');
+            document.querySelectorAll('.service-option').forEach(el => el.classList.remove('selected'));
+            document.getElementById('orderType').value = '';
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,123 @@
+<body>
+    <link rel="stylesheet" href="style.css" />
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+    <img src="campusbitelogo.png" alt="CampusBites Logo" class="logo-image" />
+    <div class="logo-text-wrapper">
+        <span class="logo-brand">
+            <span class="orange">CAMPUS</span><span class="yellow">BITES</span>
+        </span>
+        <span class="logo-slogan">
+            Bite Into <span class="highlight">Happiness</span>
+        </span>
+    </div>
+</a>
+            </a>
+            <nav class="nav">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="printing.html">Printing</a></li>
+                    <li><a href="order.html">Order</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <span class="hero-badge">⚡ Delivering Since 2024</span>
+                <h1>Delicious Meals,<br /><span class="highlight">Delivered to Your Doorstep</span></h1>
+                <p class="hero-text">Food delivery and document printing — all in one place.</p>
+                <div class="hero-buttons">
+                    <a href="order.html" class="btn btn-primary">🍽️ Order Now</a>
+                    <a href="menu.html" class="btn btn-secondary">📖 View Menu</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">68%</span>
+                        <span class="stat-label">Students Want Delivery</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">25</span>
+                        <span class="stat-label">Min Delivery Time</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">⭐ 4.8</span>
+                        <span class="stat-label">Student Rating</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&h=400&fit=crop" alt="Delicious food" />
+            </div>
+        </div>
+    </section>
+
+    <!-- MORE SECTIONS... -->
+
+    <!-- FOOTER -->
+      <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <span class="logo-brand"><span class="orange">CAMPUS</span><span class="yellow">BITES</span></span>
+                    <span class="logo-slogan">Bite Into <span class="highlight">Happiness</span></span>
+                </a>
+                <p>Making student life easier with food delivery and document printing.</p>
+                <div class="footer-social">
+                    <a href="#">📷</a>
+                    <a href="#">📘</a>
+                    <a href="#">🐦</a>
+                    <a href="#">💬</a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="printing.html">Printing</a></li>
+                    <li><a href="order.html">Order</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="menu.html">Food Delivery</a></li>
+                    <li><a href="printing.html">Document Printing</a></li>
+                    <li><a href="order.html">Bulk Orders</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li>📞 +27 12 345 6789</li>
+                    <li>📧 info@campusbites.co.za</li>
+                    <li>📍 Main Campus, Block A</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 CampusBites. All rights reserved. | Bite Into Happiness</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+    </script>
+</body>
