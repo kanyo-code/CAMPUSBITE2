@@ -7,19 +7,6 @@
     <title>CampusBites - About Us</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
-    <header class="header">
-    <div class="container header-container">
-        <a href="about.html" class="logo">
-            <img src="campusbitelogo.png" alt="CampusBites Logo" class="logo-image" />
-            <div class="logo-text-wrapper">
-                <span class="logo-brand">
-                    <span class="orange">CAMPUS</span><span class="yellow">BITES</span>
-                </span>
-                <span class="logo-slogan">
-                    Bite Into <span class="highlight">Happiness</span>
-                </span>
-            </div>
-        </a>
     <style>
         .page-header {
             background: linear-gradient(135deg, #F57C00, #FFC107);
@@ -107,8 +94,11 @@
     <header class="header">
         <div class="container header-container">
             <a href="index.html" class="logo">
-                <span class="logo-brand"><span class="orange">CAMPUS</span><span class="yellow">BITES</span></span>
-                <span class="logo-slogan">Bite Into <span class="highlight">Happiness</span></span>
+                <img src="campusbitelogo.png" alt="CampusBites Logo" class="logo-image" />
+                <div class="logo-text-wrapper">
+                    <span class="logo-brand"><span class="orange">CAMPUS</span><span class="yellow">BITES</span></span>
+                    <span class="logo-slogan">Bite Into <span class="highlight">Happiness</span></span>
+                </div>
             </a>
             <nav class="nav">
                 <ul class="nav-links" id="navLinks">
@@ -119,7 +109,7 @@
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
-            <button class="hamburger" onclick="toggleMenu()">
+            <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
                 <span></span><span></span><span></span>
             </button>
         </div>
