@@ -189,3 +189,42 @@ For any questions or issues, please contact:
 - Added in-text citations throughout both proposals
 
 ---
+# CampusBites - Part 3: Enhancing Functionality and SEO
+
+## 📖 Project Overview
+CampusBites is a student-focused platform designed to make campus life easier by offering fast food delivery and document printing services directly to students' doorsteps. 
+This repository contains the Part 3 updates, focusing on enhancing interactivity with JavaScript, implementing dynamic search features, adding robust form validation, optimizing for Search Engines (SEO), and deploying the final website.
+
+---
+
+## 📝 Changelog
+
+### 1. Feedback from Part 2 Addressed
+*Excellent work!!  References are incomplete or incorrectly formatted.* Improved Referencing correctly.
+
+### 2. New Features & Functionality (Part 3)
+*   **Dynamic Content & Search:** Added a JavaScript-driven search filter to the Menu page (`menu.html`). Users can now instantly search for food items by name (e.g., "choc") or category (e.g., "Meals"), and the DOM updates dynamically without reloading the page.
+*   **Interactive Enquiry Form (`enquiry.html`):** Created a custom form with JavaScript validation. It processes the user's input (selected item and quantity) and calculates an instant cost estimate, displaying a clear, immediate response to the user.
+*   **Interactive Contact Form (`contact.html`):** Created a general contact form with JavaScript validation. It uses FormSubmit.co to compile the form data and send it directly to the business owner's email address.
+*   **Form Validation (UX):** Implemented client-side JavaScript validation for both forms. Custom error messages appear in red below the respective fields if the input is invalid (e.g., invalid email format, missing fields, or quantity less than 1).
+*   **SEO Enhancements:** 
+    *   Added unique and descriptive `<title>` tags to every page.
+    *   Added compelling `<meta name="description">` and `<meta name="keywords">` tags to improve search engine visibility.
+    *   Optimized image file names (e.g., `butterchicken1.jpg`, `hotdog.jpg`) and added descriptive `alt` attributes to all images.
+*   **CSS Updates:** Refined the UI for the forms, menu grids, and search bar to ensure the website is responsive, mobile-friendly, and provides a seamless user experience.
+
+---
+
+## 🚀 Deployment
+The website has been successfully deployed to a live web server (Netlify/GitHub Pages). 
+**Live Website Link:** *(Paste your live Netlify/GitHub Pages link here)*
+
+---
+
+## 📚 References
+
+*   FormSubmit. (2026). *FormSubmit - Easy Email Forwarding*. [Online]. Available at: https://formsubmit.co/ (Accessed: 20 October 2026).
+*   MDN Web Docs. (2026). *Client-side form validation*. [Online]. Available at: https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation (Accessed: 20 October 2026).
+*   MDN Web Docs. (2026). *Array.prototype.filter()*. [Online]. Available at: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter (Accessed: 20 October 2026).
+*   W3Schools. (2026). *JavaScript HTML DOM EventListener*. [Online]. Available at: https://www.w3schools.com/js/js_htmldom_eventlistener.asp (Accessed: 20 October 2026).
+*   Unsplash. (2026). *Beautiful Free Images & Pictures*. [Online]. Available at: https://unsplash.com/ (Accessed: 20 October 2026).
