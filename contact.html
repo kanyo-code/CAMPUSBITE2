@@ -3,152 +3,16 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="CampusBites - Contact us for food delivery and document printing" />
-    <title>CampusBites - Contact Us</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+    <title>Contact CampusBites | Student Support & General Enquiries</title>
+    <meta name="description" content="Get in touch with CampusBites. Send us a message regarding your food delivery, document printing, or general enquiries." />
+    <meta name="keywords" content="contact campusbites, student support, food delivery help, campus printing contact" />
     <link rel="stylesheet" href="style.css" />
-    <style>
-        .page-header {
-            background: linear-gradient(135deg, #F57C00, #FFC107);
-            padding: 3.75rem 0 2.5rem;
-            text-align: center;
-            color: #1A1A2E;
-        }
-        .page-header h1 { font-size: 2.625rem; }
-        .page-header p { font-size: 1.125rem; opacity: 0.85; }
-
-        .contact-section { padding: 3.75rem 0 5rem; background: #F8F9FA; }
-        .contact-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3.125rem;
-        }
-        .contact-info h2 { font-size: 2rem; }
-        .contact-info > p { color: #757575; font-size: 1rem; margin-bottom: 1.875rem; }
-
-        .contact-details { display: flex; flex-direction: column; gap: 1.25rem; }
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1.125rem;
-            padding: 1.125rem 1.25rem;
-            background: #FFFFFF;
-            border-radius: 16px;
-            box-shadow: 0 4px 16px rgba(26, 26, 46, 0.06);
-            transition: all 0.3s ease;
-        }
-        .contact-item:hover { transform: translateX(5px); box-shadow: 0 8px 24px rgba(26, 26, 46, 0.12); }
-        .contact-icon {
-            font-size: 1.75rem;
-            flex-shrink: 0;
-            width: 50px;
-            height: 50px;
-            background: #FFF8E1;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .contact-item h4 { font-size: 0.9375rem; }
-        .contact-item p { color: #757575; font-size: 0.875rem; }
-
-        .contact-form-container {
-            background: #FFFFFF;
-            border-radius: 24px;
-            padding: 2.5rem;
-            box-shadow: 0 8px 32px rgba(26, 26, 46, 0.08);
-        }
-        .contact-form-container h3 { font-size: 1.5rem; }
-        .contact-form-container > p { color: #757575; font-size: 0.875rem; margin-bottom: 1.5625rem; }
-
-        .form-group { margin-bottom: 1.25rem; }
-        .form-group label {
-            display: block;
-            font-family: 'Poppins', Arial, sans-serif;
-            font-weight: 600;
-            font-size: 0.875rem;
-            color: #1A1A2E;
-            margin-bottom: 0.3125rem;
-        }
-        .form-group .required { color: #E53935; }
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            border: 2px solid #E0E0E0;
-            border-radius: 12px;
-            font-family: 'Open Sans', Arial, sans-serif;
-            font-size: 0.9375rem;
-            transition: all 0.3s ease;
-            background: #FFFFFF;
-        }
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            border-color: #F57C00;
-            outline: none;
-            box-shadow: 0 0 0 4px rgba(245, 124, 0, 0.1);
-        }
-        .form-group textarea { resize: vertical; min-height: 80px; }
-
-        .success-message {
-            display: none;
-            text-align: center;
-            padding: 1.875rem;
-            background: #E8F5E9;
-            border-radius: 16px;
-            margin-top: 1.25rem;
-        }
-        .success-message.visible { display: block; }
-        .success-message .success-icon { font-size: 3rem; }
-        .success-message h4 { font-size: 1.25rem; color: #2E7D32; margin: 0.625rem 0; }
-        .success-message p { color: #4CAF50; font-size: 0.9375rem; }
-
-        .map-section { padding: 0 0 3.75rem; background: #F8F9FA; }
-        .map-container { border-radius: 20px; overflow: hidden; box-shadow: 0 8px 32px rgba(26, 26, 46, 0.08); }
-        .map-container iframe { width: 100%; height: 350px; border: none; display: block; }
-
-        /* Logo Background */
-        body {
-            background-image: url('camppustitelogo.png');
-            background-repeat: repeat;
-            background-size: 200px 200px;
-            background-opacity: 0.05;
-            background-attachment: fixed;
-        }
-
-        .page-header,
-        .contact-section,
-        .map-section {
-            background: transparent;
-        }
-
-        .contact-section .container,
-        .map-section .container {
-            background: rgba(255, 255, 255, 0.92);
-            padding: 2rem;
-            border-radius: 20px;
-        }
-
-        @media (max-width: 992px) {
-            .contact-wrapper { grid-template-columns: 1fr; }
-            .contact-section .container { padding: 1rem; }
-        }
-        @media (max-width: 768px) {
-            .page-header h1 { font-size: 1.75rem; }
-            .contact-form-container { padding: 1.5625rem; }
-            body { background-size: 100px 100px; }
-        }
-    </style>
 </head>
 <body>
-
-    <!-- ===== HEADER ===== -->
     <header class="header">
         <div class="container header-container">
             <a href="index.html" class="logo">
-                <img src="campusbitelogo.png" class="logo-image" />
+                <img src="campusbitelogo.png" alt="CampusBites student food delivery logo" class="logo-image" />
                 <div class="logo-text-wrapper">
                     <span class="logo-brand"><span class="orange">CAMPUS</span><span class="yellow">BITES</span></span>
                     <span class="logo-slogan">Bite Into <span class="highlight">Happiness</span></span>
@@ -163,184 +27,112 @@
                     <li><a href="contact.html" class="active">Contact</a></li>
                 </ul>
             </nav>
-            <button class="hamburger" onclick="toggleMenu()">
+            <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
                 <span></span><span></span><span></span>
             </button>
         </div>
     </header>
 
-    <!-- ===== PAGE HEADER ===== -->
-    <section class="page-header">
-        <div class="container">
-            <h1>Contact Us</h1>
-            <p>We're here to help. Reach out anytime.</p>
-        </div>
-    </section>
+    <section class="form-section">
+        <div class="container form-container">
+            <h2>Contact Us</h2>
+            <p>Have a question or need help with an order? Send us a message.</p>
 
-    <!-- ===== CONTACT SECTION ===== -->
-    <section class="contact-section">
-        <div class="container">
-            <div class="contact-wrapper">
-                <!-- Contact Info -->
-                <div class="contact-info">
-                    <h2>Get in Touch</h2>
-                    <p>Have a question or need help? We're just a message away.</p>
+            <form id="contactForm" action="https://formsubmit.co/st10491900@rcconnect.edu.za" method="POST" novalidate>
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_subject" value="New Message from CampusBites Website!" />
 
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">📞</div>
-                            <div>
-                                <h4>Phone</h4>
-                                <p>+27 12 345 6789</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">📧</div>
-                            <div>
-                                <h4>Email</h4>
-                                <p>info@campusbites.co.za</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">📍</div>
-                            <div>
-                                <h4>Location</h4>
-                                <p>Main Campus, Block A</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">⏰</div>
-                            <div>
-                                <h4>Operating Hours</h4>
-                                <p>Mon-Fri: 8:00 AM - 8:00 PM<br />Sat: 9:00 AM - 5:00 PM</p>
-                            </div>
-                        </div>
-                    </div>
+                <div class="form-group">
+                    <label for="contactName">Full Name *</label>
+                    <input type="text" id="contactName" name="name" placeholder="e.g. Jane Smith" />
+                    <span class="error-msg" id="cNameError"></span>
                 </div>
 
-                <!-- Contact Form -->
-                <div class="contact-form-container">
-                    <h3>Send Us a Message</h3>
-                    <p>We'll get back to you within 24 hours.</p>
-
-                    <form id="contactForm" onsubmit="handleContact(event)">
-                        <div class="form-group">
-                            <label for="contactName">Full Name <span class="required">*</span></label>
-                            <input type="text" id="contactName" placeholder="Your full name" required />
-                        </div>
-                        <div class="form-group">
-                            <label for="contactEmail">Email Address <span class="required">*</span></label>
-                            <input type="email" id="contactEmail" placeholder="your@email.com" required />
-                        </div>
-                        <div class="form-group">
-                            <label for="contactSubject">Subject <span class="required">*</span></label>
-                            <select id="contactSubject" required>
-                                <option value="">Select a subject...</option>
-                                <option value="order">Order Enquiry</option>
-                                <option value="complaint">Complaint</option>
-                                <option value="feedback">Feedback</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="contactMessage">Message <span class="required">*</span></label>
-                            <textarea id="contactMessage" rows="5" placeholder="Your message..." required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-large" style="width:100%;">
-                            📨 Send Message
-                        </button>
-                    </form>
-
-                    <div class="success-message" id="successMessage">
-                        <div class="success-icon">✅</div>
-                        <h4>Message Sent Successfully!</h4>
-                        <p>We'll get back to you within 24 hours.</p>
-                    </div>
+                <div class="form-group">
+                    <label for="contactEmail">Email Address *</label>
+                    <input type="email" id="contactEmail" name="email" placeholder="e.g. jane@student.edu" />
+                    <span class="error-msg" id="cEmailError"></span>
                 </div>
-            </div>
+
+                <div class="form-group">
+                    <label for="messageType">Type of Message *</label>
+                    <select id="messageType" name="messageType">
+                        <option value="">-- Select a topic --</option>
+                        <option value="Order Issue">Order Issue / Missing Item</option>
+                        <option value="Printing Help">Printing Help</option>
+                        <option value="Sponsorship">Sponsorship / Partnership</option>
+                        <option value="General">General Enquiry</option>
+                    </select>
+                    <span class="error-msg" id="cTypeError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="contactMessage">Your Message *</label>
+                    <textarea id="contactMessage" name="message" rows="5" placeholder="Type your message here..."></textarea>
+                    <span class="error-msg" id="cMsgError"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
         </div>
     </section>
 
-    <!-- ===== MAP SECTION ===== -->
-    <section class="map-section">
-        <div class="container">
-            <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3580.0!2d28.0!3d-26.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zz!!5e0!3m2!1sen!2sza!4v1600000000000" allowfullscreen loading="lazy"></iframe>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== FOOTER ===== -->
     <footer class="footer">
-        <div class="container footer-container">
-            <div class="footer-brand">
-                <a href="index.html" class="logo">
-                    <img src="camppustitelogo.png" alt="CampusBites Logo" class="logo-image" style="height:40px;" />
-                    <div class="logo-text-wrapper">
-                        <span class="logo-brand"><span class="orange">CAMPUS</span><span class="yellow">BITES</span></span>
-                        <span class="logo-slogan">Bite Into <span class="highlight">Happiness</span></span>
-                    </div>
-                </a>
-                <p>Making student life easier with food delivery and document printing.</p>
-                <div class="footer-social">
-                    <a href="#">📷</a>
-                    <a href="#">📘</a>
-                    <a href="#">🐦</a>
-                    <a href="#">💬</a>
-                </div>
-            </div>
-            <div class="footer-links">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="menu.html">Menu</a></li>
-                    <li><a href="printing.html">Printing</a></li>
-                    <li><a href="order.html">Order</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h4>Services</h4>
-                <ul>
-                    <li><a href="menu.html">Food Delivery</a></li>
-                    <li><a href="printing.html">Document Printing</a></li>
-                    <li><a href="order.html">Bulk Orders</a></li>
-                </ul>
-            </div>
-            <div class="footer-contact">
-                <h4>Contact Us</h4>
-                <ul>
-                    <li>📞 +27 12 345 6789</li>
-                    <li>📧 info@campusbites.co.za</li>
-                    <li>📍 Main Campus, Block A</li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <div class="container">
-                <p>&copy; 2026 CampusBites. All rights reserved. | Bite Into Happiness</p>
-            </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 CampusBites. All rights reserved. | Bite Into Happiness</p>
         </div>
     </footer>
 
-    <!-- ===== JAVASCRIPT ===== -->
     <script>
         function toggleMenu() {
-            document.getElementById('navLinks').classList.toggle('active');
+            const navLinks = document.getElementById('navLinks');
+            if (navLinks) {
+                navLinks.classList.toggle('active');
+            }
         }
 
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('navLinks').classList.remove('active');
-            });
-        });
+        const contactForm = document.getElementById('contactForm');
 
-        function handleContact(e) {
-            e.preventDefault();
-            document.getElementById('contactForm').style.display = 'none';
-            document.getElementById('successMessage').classList.add('visible');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(event) {
+                document.getElementById('cNameError').innerText = '';
+                document.getElementById('cEmailError').innerText = '';
+                document.getElementById('cTypeError').innerText = '';
+                document.getElementById('cMsgError').innerText = '';
+
+                const name = document.getElementById('contactName').value.trim();
+                const email = document.getElementById('contactEmail').value.trim();
+                const type = document.getElementById('messageType').value;
+                const message = document.getElementById('contactMessage').value.trim();
+
+                let isValid = true;
+
+                if (name === '') {
+                    document.getElementById('cNameError').innerText = 'Please enter your name.';
+                    isValid = false;
+                }
+
+                const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+                if (!email.match(emailPattern)) {
+                    document.getElementById('cEmailError').innerText = 'Please enter a valid email address.';
+                    isValid = false;
+                }
+
+                if (type === '') {
+                    document.getElementById('cTypeError').innerText = 'Please select a message type.';
+                    isValid = false;
+                }
+
+                if (message.length < 10) {
+                    document.getElementById('cMsgError').innerText = 'Message must be at least 10 characters long.';
+                    isValid = false;
+                }
+
+                if (!isValid) {
+                    event.preventDefault();
+                }
+            });
         }
     </script>
-
 </body>
 </html>
