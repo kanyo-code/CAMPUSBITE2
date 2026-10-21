@@ -217,7 +217,7 @@ This repository contains the Part 3 updates, focusing on enhancing interactivity
 
 ## 🚀 Deployment
 The website has been successfully deployed to a live web server (Netlify/GitHub Pages). 
-**Live Website Link:** *(Paste your live Netlify/GitHub Pages link here)*
+**Live Website Link:**https://reliable-lebkuchen-fcb188.netlify.app
 
 ---
 
